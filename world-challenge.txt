@@ -1,0 +1,41 @@
+USE world;
+SELECT count(*) FROM city WHERE countrycode = 'USA';
+
+select name, population, LifeExpectancy FROM country where name='Argentina';
+
+select name, LifeExpectancy FROM country WHERE LifeExpectancy=(
+SELECT MAX(LifeExpectancy) from country);
+
+select * from country;
+
+SELECT ci.name from country co
+JOIN city ci ON ci.id=co.capital Where co.name='Spain';
+ 
+ SELECT DISTINCT Language FROM country co
+ JOIN countrylanguage cl ON cl.CountryCode=co.code Where Region='Southeast Asia';
+ 
+SELECT name FROM city WHERE name LIKE 'f%';
+
+SELECT COUNT(CountryCode) FROM city ci
+JOIN country co ON co.code=ci.countrycode WHERE code='CHN';
+
+SELECT Name, Population FROM country WHERE Population=(SELECT MIN(population) FROM country WHERE population>0);
+
+SELEct * from country;
+
+SELECT COUNT(code) from country;
+
+SELECT name, SurfaceArea from country ORDER BY SurfaceArea DESC LIMIT 10; 
+
+SELECT ci.name, ci.population from country co
+JOIN city ci ON ci.CountryCode=co.code WHERE co.name='japan' ORDER BY population DESC LIMIT 5;
+
+select * from country;
+ 
+ SET SQL_SAFE_UPDATES=0;
+ 
+ UPDATE country 
+ SET HeadOfState='Elizabeth II' WHERE HeadOfState='Elisabeth II';
+ 
+ SELECT name, code FROM country WHERE HeadOfState='Elizabeth II';
+ 
